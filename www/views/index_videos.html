@@ -1,0 +1,13 @@
+<div class="section videos">
+	<h2>
+		<i class="fa fa-videospaper-o"></i> Hot videos
+	</h2>
+	{{videos}}
+	<div class="row">
+		<div data-ng-repeat="video in videos" class="col-xs-4">
+			<img alt="video" ng-src="{{videoThumb(video.url)}}" />
+		</div>
+	</div>
+	<a href="#/videos" class="btn btn-success btn-xs">View All videos</a>
+		
+</div>

@@ -1,0 +1,26 @@
+<div class="section news">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<i class="fa fa-newspaper-o"></i> Hot News
+	</div>
+	<div class="panel-body list-group no-padding news-wrapper">
+		<div data-ng-repeat="newz in news" class="list-group-item news-item">
+			<span class="news-date small mute">{{newz.date | myDate}}</span>
+			<a href="#" >
+				{{newz.title}}
+			</a>
+		</div>
+		<div data-ng-repeat="newz in news" class="list-group-item news-item">
+			<span class="news-date small mute">{{newz.date | myDate}}</span>
+			<a href="#" >
+				{{newz.title}}
+			</a>
+		</div>
+		
+	</div>
+	<div class="panel-footer text-right">
+		<a href="#/news" class="btn btn-success btn-xs">View All News</a>
+	</div>
+</div><!--.panel-->
+
+</div>
