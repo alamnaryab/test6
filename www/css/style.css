@@ -81,12 +81,12 @@ Page-area
 }
 
 .page-content h1{
-    color: #e42b26; /*#00a2e8;*/
+    color: #6b0704;
     font-weight: bold;
-    border-bottom: 3px solid #2aad59;
+    border-bottom: 3px solid #6b0704;
     display: inline-block;
     padding-bottom: 5px;
-	font-size:28px;
+    font-size: 28px;
 }
 .page-content .section.newz h1{
 	color: #00a2e8;
@@ -187,6 +187,11 @@ News
 video::-internal-media-controls-download-button {display:none;}
 video::-webkit-media-controls-enclosure {overflow:hidden;}
 video::-webkit-media-controls-panel {width: calc(100% + 30px);}
+.video-title{
+	color: #FFF;
+    font-weight: bold;
+    white-space: nowrap;
+}
 .section.news{
 	background:url(../img/party-crowd.jpg);
 	background-size:100% 100%;

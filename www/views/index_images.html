@@ -4,9 +4,9 @@
 			<i class="fa fa-picture-o"></i> Images
 		</h1>
 		<div class="row">
-			<div data-ng-repeat="img in images" class="col-xs-6 col-sm-4 col-md-3  col-lg-3">
+			<div data-ng-repeat="img in images" ng-if="$index<6" class="col-xs-6 col-sm-4 col-md-3  col-lg-3">
 				<div class="photo thumbnail">
-					<a href="{{img.url}}" class="swipebox">
+					<a href="{{img.url}}" class="swipebox" title="{{img.title + ' | ' +img.tags}}" >
 						<img alt="image" ng-src="{{img.url}}" class="img-responsive" />
 					</a>
 				</div>

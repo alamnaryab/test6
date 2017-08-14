@@ -38,6 +38,8 @@ app.config(['$locationProvider', function($locationProvider) {
 app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
     
     //set loading variable (is ajax running?)
+	$scope.identifier= 'com.codingsips.pti1';
+	$scope.about 	= dbGet('about');
     $scope.loading 	= false;
 	$scope.server 	= _s.server;
 	$scope.party_id = _s.party_id;
@@ -53,8 +55,10 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.videos 	= dbGet('videos');
 	$scope.video    = [];
 	$scope.vindex   = 0;
+	$scope.limit    = 50;
+	$scope.noffset  = 0;
 	$scope.voffset  = 0;
-	$scope.vlimit   = 10;
+	$scope.ioffset  = 0;
 	$scope.images 	= dbGet('images');
 	$scope.image    = '';
 	
@@ -71,7 +75,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('menus',$scope.menus);
         },function myError(response) {
 			$scope.menus	= dbGet('menus');
-            msg('Could not connect to server....');
+            msg('Could not connect to server.[menus]');
         });
 		$scope.loading = false;
 	}
@@ -89,14 +93,14 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('pages',$scope.pages);
         },function myError(response) {
 			$scope.pages	= dbGet('pages');
-            msg('Could not connect to server...');
+            msg('Could not connect to server.[pages]');
         });
 		$scope.loading = false;
 	}
 	
 	$scope.getNews = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
-		limit = typeof limit !== 'undefined' ? limit : 10;
+		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
 		$scope.loading = true;
 		$http({
 			method:"GET", 
@@ -109,7 +113,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('news',$scope.news);
         },function myError(response) {
 			$scope.news	= dbGet('news');
-            msg('Could not connect to server.');
+            msg('Could not connect to server.[news]');
         });
 		$scope.loading = false;
 	}
@@ -124,9 +128,10 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
             $scope.sliders = response.data;
+			dbSave('sliders',$scope.sliders);
         },function myError(response) {
-			$scope.news	= dbGet('news');
-            msg('Could not connect to server.');
+			$scope.news	= dbGet('sliders');
+            msg('Could not connect to server.[sliders]');
         });
 		$scope.loading = false;
 	}
@@ -134,7 +139,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	
 	$scope.getVideos = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
-		limit = typeof limit !== 'undefined' ? limit : 10;
+		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
 		$scope.loading = true;
 		$http({
 			method:"GET", 
@@ -147,14 +152,14 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('videos',$scope.videos);
         },function myError(response) {
 			$scope.videos	= dbGet('videos');
-            msg('Could not connect to server..');
+            msg('Could not connect to server.[videos]');
         });
 		$scope.loading = false;
 	}
 	
 	$scope.getImages = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
-		limit = typeof limit !== 'undefined' ? limit : 10;
+		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
 		$scope.loading = true;
 		$http({
 			method:"GET", 
@@ -167,7 +172,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('images',$scope.images);
         },function myError(response) {
 			$scope.images	= dbGet('images');
-            msg('Could not connect to server..');
+            msg('Could not connect to server.[images]');
         });
 		$scope.loading = false;
 	}
@@ -178,6 +183,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.getPages();
 	$scope.getVideos();
 	$scope.getImages();
+		
 	
 	$scope.$on('$routeChangeStart', function(event, next, current){
 		if(next.templateUrl == 'views/videos.html'){
@@ -265,6 +271,26 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		navz +='<div class="clearfix"></div>';
 		return navz;
 	}
+	
+	/*about starts here*/
+	var about = JSON.parse(localStorage.getItem("about"));
+	if(about == null){
+		about = 'coming soon';
+	}
+	$http({
+		method:"GET", 
+		async :true,
+		url: 'http://apps.alampk.com/api/mobile-apps-by-alam.php?id='+$scope.identifier,
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {				
+		about = response.data;
+		dbSave("about", about);
+		
+	},function myError(jqXHR, exception) {
+		//nothing to display
+	});
+	$scope.about = about;
+   /*about ends here*/
 });
 
 app.filter("h", ['$sce', function ($sce) {
