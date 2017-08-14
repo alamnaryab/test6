@@ -4,8 +4,8 @@
 		  
 			<div data-ng-repeat="slider in sliders" class="item" ng-class="{active:!$index}">
 			  <img data-ng-src="{{slider.image}}" alt="slider">
-			  <div class="carousel-caption">
-				<p>{{slider.title + ' '+ slider.description}}</p>
+			  <div class="carousel-caption" ng-if="slider.title.length>0" >
+				<p>{{slider.title}}</p>
 			  </div>
 			</div>
 

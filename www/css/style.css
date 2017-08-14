@@ -22,14 +22,27 @@ General
 Nav
 ********/
 .navbar{
-	background-image:url(../img/h-bg.jpg);
-	background-size:2px 100%;
+	background:url(../img/cross-bg.jpg);
+	background-position:0 50px;
+	background-size:100% 100%;
 	border: 0px;
     border-bottom: 1px solid #b32d14;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #81922c;
+.navbar .navbar-header{
+	background-image:url(../img/h-bg.jpg);
+	background-size:12px 100%;
+	height:50px;
 }
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #b32d14;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #b32d14;
+	color:#5cf15c;
+	border-color: #1e7320;
+}
+.navbar-toggle[aria-expanded="true"]{background:green;}
+.navbar-toggle[aria-expanded="true"]:hover{background:green;}
 .navbar-default .navbar-nav>li>a {
     color: #fffdfd;
 }
@@ -68,29 +81,43 @@ Page-area
 }
 
 .page-content h1{
-    color: #fff; /*#00a2e8;*/
+    color: #e42b26; /*#00a2e8;*/
     font-weight: bold;
-    border-bottom: 3px solid coral;
+    border-bottom: 3px solid #2aad59;
     display: inline-block;
     padding-bottom: 5px;
 	font-size:28px;
 }
-
+.page-content .section.newz h1{
+	color: #00a2e8;
+	border-bottom: 3px solid #37ff7f;
+}
+.page-content .section.news h1{
+	border-bottom: 3px solid #FFF;
+}
+.page-content .section.videos h1{
+	color: #FFF;
+	border-bottom: 3px solid #b1c351;
+}
+.page-content .section.images h1{
+	color: #FFF;
+	border-bottom: 3px solid #b1c351;
+}
+.carousel{
+	margin:10px 0px;
+}
 .carousel-caption{
 	background: rgba(22,22,22,0.8);
     width: 100%;
-    bottom: 0px;
+    top: 0px;
     left: 0px;
     padding: 0px 5px 0px 5px;
-	max-height:46px;
+	max-height:1.5em;
 	white-space: nowrap;
 }
 .carousel-caption h3,.carousel-caption p{
 	padding:0px;
 	margin:0px;
-}
-#myCarousel .item{
-	height:165px;
 }
 #myCarousel .item img{
 	width:100%;
@@ -104,13 +131,13 @@ Page-area
 	top:-2px;
 }
 .newDefultImg{
-	max-height:3em;
-	max-width:3em;
-	padding:2px;
-	border:1px solid #DDD;
-	background:#FFF;
-	margin-right:-10px;
-	position: relative;
+	height: 40px;
+    width: 40px;
+    padding: 2px;
+    border: 1px solid #DDD;
+    background: #FFF;
+    margin-right: -10px;
+    position: relative;
     top: -11px;
     left: -16px;
 }
@@ -164,9 +191,6 @@ video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 	background:url(../img/party-crowd.jpg);
 	background-size:100% 100%;
 }
-.page-content .section.newz h1{
-	color: #00a2e8;
-}
 .section.images{
 	background:url(../img/red-bg.jpg);
 	background-size:100% 100%;
@@ -180,12 +204,14 @@ video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 	background-size:100% 100%;
 }
 .section.images .photo{
-	height:15vw;
+	height:25vw;
+	max-height:135px;
 	overflow:hidden;
 	margin-bottom:15px;
 }
 .section.videos .photo{
 	height:25vw;
+	max-height:135px;
 	overflow:hidden;
 	margin-bottom:15px;
 }
@@ -200,4 +226,11 @@ Footer
     padding: 20px;
     background: #444;
     color:#EEE;
+}
+
+@media (min-width: 450px) and (max-width: 767px){
+	div.col-xs-6{
+		width:33%;
+	}
+	
 }
