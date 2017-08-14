@@ -204,7 +204,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	
 	$scope.$on('$viewContentLoaded', function(){
 		if($route.current.loadedTemplateUrl == 'views/index.html'){			
-			//if home page
+			$('.swipebox').swipebox();
 		}else if($route.current.loadedTemplateUrl == 'views/images.html'){			
 			$('.swipebox').swipebox();
 		}
