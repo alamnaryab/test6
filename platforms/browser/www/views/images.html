@@ -1,0 +1,17 @@
+<div class="row section images">
+	<div class="col-xs-12 col-lg-12">
+		<h1>
+			<i class="fa fa-picture-o"></i> Images
+		</h1>
+		<div class="row">
+			<div data-ng-repeat="img in images" class="col-xs-4 col-sm-3 ">
+				<div class="photo thumbnail">
+					<a href="{{img.url}}" class="swipebox">
+						<img alt="image" ng-src="{{img.url}}" class="img-responsive" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<a href="#" class="btn btn-success btn-xs">Load More</a>
+	</div>
+</div>

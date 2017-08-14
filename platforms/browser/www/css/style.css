@@ -1,0 +1,203 @@
+/********
+General
+********/
+.no-padding-top{padding-top:0px;}
+.no-padding-right{padding-right:0px;}
+.no-padding-bottom{padding-bottom:0px;}
+.no-padding-left{padding-left:0px;}
+.no-padding{padding:0px;}
+
+.no-margin-top{margin-top:0px;}
+.no-margin-right{margin-right:0px;}
+.no-margin-bottom{margin-bottom:0px;}
+.no-margin-left{margin-left:0px;}
+.no-margin{margin:0px;}
+
+.radius3{ border-radius: 3px; -mox-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; }
+.radius5{ border-radius: 5px; -mox-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; }
+.radius10{ border-radius: 10px; -mox-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; }
+.no-radius{ border-radius: 0px; -mox-border-radius: 0px; -webkit-border-radius: 0px; -o-border-radius: 0px; }
+
+/********
+Nav
+********/
+.navbar{
+	background-image:url(../img/h-bg.jpg);
+	background-size:2px 100%;
+	border: 0px;
+    border-bottom: 1px solid #b32d14;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #81922c;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #fffdfd;
+}
+@media (max-width: 767px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #FFF;
+}}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #FFF;
+    background-color: transparent;
+}
+.logo-link{padding:10px 10px 0 10px; }
+.logo-link span{
+	color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+    display: inline-block;
+    line-height: 1em;
+    position: relative;
+    top: 10px;
+}
+.logo-img{max-height:45px;}
+.navbar-toggle {
+	margin-top: 4px;
+    margin-bottom: 1px;
+}
+
+
+
+/********
+Page-area
+********/
+
+.page-wrapper{
+    min-height: 500px;
+}
+
+.page-content h1{
+    color: #fff; /*#00a2e8;*/
+    font-weight: bold;
+    border-bottom: 3px solid coral;
+    display: inline-block;
+    padding-bottom: 5px;
+	font-size:28px;
+}
+
+.carousel-caption{
+	background: rgba(22,22,22,0.8);
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    padding: 0px 5px 0px 5px;
+	max-height:46px;
+	white-space: nowrap;
+}
+.carousel-caption h3,.carousel-caption p{
+	padding:0px;
+	margin:0px;
+}
+#myCarousel .item{
+	height:165px;
+}
+#myCarousel .item img{
+	width:100%;
+}
+.news-wrapper .news-item{
+	position:relative;
+}
+.news-wrapper .news-item .news-date{
+	position:absolute;
+	right:3px;
+	top:-2px;
+}
+.newDefultImg{
+	max-height:3em;
+	max-width:3em;
+	padding:2px;
+	border:1px solid #DDD;
+	background:#FFF;
+	margin-right:-10px;
+	position: relative;
+    top: -11px;
+    left: -16px;
+}
+/********
+News
+********/
+.newz-item{
+	background:rgba(22,22,22,0.5);
+	border:1px solid #555;
+	color:#FFF;
+	padding:5px;
+}
+.newz-item .news-title{
+	font-weight:bold;
+	font-size:18px;
+}
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ 
+	height: 0;
+	​width: 100%; /* You can set this width to whatever suits your needs */     
+	margin: 0 auto 20px auto;
+	z-index:8;
+}
+.video-container .overlay{
+	display:block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;  
+	height: 100%;
+	background:rgba(22,22,22,0.1);
+	z-index:10;
+	
+}
+.video-container iframe,
+.video-container object,
+.video-container video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;  
+	height: 100%;
+	background:#000;
+	z-index:9;
+}
+video::-internal-media-controls-download-button {display:none;}
+video::-webkit-media-controls-enclosure {overflow:hidden;}
+video::-webkit-media-controls-panel {width: calc(100% + 30px);}
+.section.news{
+	background:url(../img/party-crowd.jpg);
+	background-size:100% 100%;
+}
+.page-content .section.newz h1{
+	color: #00a2e8;
+}
+.section.images{
+	background:url(../img/red-bg.jpg);
+	background-size:100% 100%;
+}
+.section.videos{
+	background:url(../img/green-bg.jpg);
+	background-size:100% 100%;
+}
+.section.video{
+	background:url(../img/cross-bg.jpg);
+	background-size:100% 100%;
+}
+.section.images .photo{
+	height:15vw;
+	overflow:hidden;
+	margin-bottom:15px;
+}
+.section.videos .photo{
+	height:25vw;
+	overflow:hidden;
+	margin-bottom:15px;
+}
+.section>.col-xs-12{
+	padding-bottom:20px;
+}
+.navz{margin:10px 0px;}
+/********
+Footer
+********/
+.footer{
+    padding: 20px;
+    background: #444;
+    color:#EEE;
+}

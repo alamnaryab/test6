@@ -1,0 +1,15 @@
+<div class="row section video">
+	<div class="col-xs-12 col-lg-12">
+		<h1>
+			<i class="fa fa-film"></i> Video
+		</h1>
+		<div class="row">
+			<div class="video-container"  ng-bind-html="video.vframe | h"></div>				
+		</div>
+		
+		<div class="navz" ng-bind-html="videoNavs() | h"></div>
+
+		<div class="tags" ng-bind-html="makeTags(video.tags) | h"></div>
+		
+	</div>
+</div>
