@@ -4,7 +4,7 @@ var _s;
 $(function(){
 	if(!isset('settings') || 1==1){
 		var settings = {
-				server 		: 'http://localhost/apps/pti/',
+				server 		: 'http://localhost/party',
 				party_id 	: 1,
 				party_sm 	: 'PTI',
 				party_lg 	: 'Pakistan Tehreek e Insaf',
@@ -72,55 +72,3 @@ function inet(){
 		error:function(a,b){return false;}
 	});
 }
-
-function vmId(url){
-	var r = /(videos|video|channels|\.com)\/([\d]+)/,
-    a = "https://vimeo.com/album/2222222/video/11111111";
-	return a.match(r)[2];
-}
-function vmThumb(url){
-	var vid = vmId(url);
-	$.getJSON('http://www.vimeo.com/api/v2/video/' + vid + '.json?callback=?', {format: "json"}, function(data) {
-		return data[0].thumbnail_medium;
-	});
-}
-function vmIframe(url){
-	var vid = vmId(url);
-	str = '<iframe src="https://player.vimeo.com/video/'+vid+'" '
-		+ 'frameborder="0" '
-		+ 'webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-	return str;
-}
-
-function fbId(url) {
-	var myRegexp = /2F(\d+)%/g;
-	var match = myRegexp.exec(url);
-	return match[1];
-}
-function fbThumb(url){
-	var vid = fbId(url);
-	return 'https://graph.facebook.com/'+vid+'/picture';
-}
-function fbIframe(url){
-	var vid = fbId(url);
-	str = '<iframe src="https://web.facebook.com/plugins/video.php?href=https%3A%2F%2Fweb.facebook.com%2Fbelgranohobbies%2Fvideos%2F'+vid+'%2F&show_text=0&width=560" '
-		+ 'style="border:none;overflow:hidden" scrolling="no" '
-		+ 'frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>';
-	return str;
-}
-
-function ytId(url){
-	var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
-	return videoid[1];
-}
-function ytThumb(url){
-	var vid = ytId(url);
-	return 'https://img.youtube.com/vi/'+vid+'/mqdefault.jpg';
-}
-function ytIframe(url){
-	var vid = ytId(url);
-	str = '<iframe src="https://www.youtube.com/embed/'+vid+'" '
-		+ 'frameborder="0" allowfullscreen></iframe>';
-	return str;
-}
-

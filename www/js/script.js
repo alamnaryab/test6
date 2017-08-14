@@ -10,6 +10,21 @@ app.config(function($routeProvider) {
 	.when('/about',{
 		templateUrl: 'views/about.html'
 	})
+	.when('/news_list/:offset/:limit',{
+		templateUrl: 'views/news_list.html'
+	})
+	.when('/news/:nindex',{
+		templateUrl: 'views/news.html'
+	})
+	.when('/videos/:offset/:limit',{
+		templateUrl: 'views/videos.html'
+	})
+	.when('/video/:vindex',{
+		templateUrl: 'views/video.html'
+	})
+	.when('/images/:offset/:limit',{
+		templateUrl: 'views/images.html'
+	})
 	.when('/settings',{
 		templateUrl: 'views/settings.html'
 	})
@@ -30,18 +45,25 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.party_lg = _s.party_lg;
 	$scope.menus	= dbGet('menus');
 	$scope.pages	= dbGet('pages');
-	$scope.page		= '';
+	$scope.page		= [];
 	$scope.news 	= dbGet('news');
-	$scope.newz     = '';
+	$scope.nindex 	= 0;
+	$scope.newz     = [];
+	$scope.sliders 	= dbGet('sliders');
 	$scope.videos 	= dbGet('videos');
-	$scope.video     = '';
+	$scope.video    = [];
+	$scope.vindex   = 0;
+	$scope.voffset  = 0;
+	$scope.vlimit   = 10;
+	$scope.images 	= dbGet('images');
+	$scope.image    = '';
 	
 	$scope.getMenus = function(){
 		$scope.loading = true;
 		$http({
 			method:"GET", 
             async : false,
-            url: $scope.server+'/api/menus.php?party='+$scope.party_id,
+            url: $scope.server+'/api/menus/'+$scope.party_id,
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
@@ -49,7 +71,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('menus',$scope.menus);
         },function myError(response) {
 			$scope.menus	= dbGet('menus');
-            msg('Could not connect to server');
+            msg('Could not connect to server....');
         });
 		$scope.loading = false;
 	}
@@ -59,7 +81,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		$http({
 			method:"GET", 
             async : false,
-            url: $scope.server+'/api/pages.php?party='+$scope.party_id,
+            url: $scope.server+'/api/pages/'+$scope.party_id,
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
@@ -67,17 +89,19 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('pages',$scope.pages);
         },function myError(response) {
 			$scope.pages	= dbGet('pages');
-            msg('Could not connect to server');
+            msg('Could not connect to server...');
         });
 		$scope.loading = false;
 	}
 	
-	$scope.getNews = function(){
+	$scope.getNews = function(offset,limit){
+		offset = typeof offset !== 'undefined' ? offset : 0;
+		limit = typeof limit !== 'undefined' ? limit : 10;
 		$scope.loading = true;
 		$http({
 			method:"GET", 
             async : false,
-            url: $scope.server+'/api/news.php?party='+$scope.party_id,
+            url: $scope.server+'/api/news/'+$scope.party_id+'/'+offset+'/'+limit,
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
@@ -85,18 +109,37 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('news',$scope.news);
         },function myError(response) {
 			$scope.news	= dbGet('news');
-            msg('Could not connect to server');
+            msg('Could not connect to server.');
+        });
+		$scope.loading = false;
+	}
+	
+	$scope.getSliders = function(){
+		$scope.loading = true;
+		$http({
+			method:"GET", 
+            async : false,
+            url: $scope.server+'/api/sliders/'+$scope.party_id,
+            method: "GET",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(response) {
+            $scope.sliders = response.data;
+        },function myError(response) {
+			$scope.news	= dbGet('news');
+            msg('Could not connect to server.');
         });
 		$scope.loading = false;
 	}
 	
 	
-	$scope.getVideos = function(){
+	$scope.getVideos = function(offset,limit){
+		offset = typeof offset !== 'undefined' ? offset : 0;
+		limit = typeof limit !== 'undefined' ? limit : 10;
 		$scope.loading = true;
 		$http({
 			method:"GET", 
             async : false,
-            url: $scope.server+'/api/videos.php?party='+$scope.party_id,
+            url: $scope.server+'/api/videos/'+$scope.party_id+'/'+offset+'/'+limit,
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
@@ -104,26 +147,71 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			dbSave('videos',$scope.videos);
         },function myError(response) {
 			$scope.videos	= dbGet('videos');
-            msg('Could not connect to server');
+            msg('Could not connect to server..');
         });
 		$scope.loading = false;
 	}
 	
+	$scope.getImages = function(offset,limit){
+		offset = typeof offset !== 'undefined' ? offset : 0;
+		limit = typeof limit !== 'undefined' ? limit : 10;
+		$scope.loading = true;
+		$http({
+			method:"GET", 
+            async : false,
+            url: $scope.server+'/api/images/'+$scope.party_id+'/'+offset+'/'+limit,
+            method: "GET",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(response) {
+            $scope.images = response.data;
+			dbSave('images',$scope.images);
+        },function myError(response) {
+			$scope.images	= dbGet('images');
+            msg('Could not connect to server..');
+        });
+		$scope.loading = false;
+	}
+	
+	$scope.getSliders();
 	$scope.getNews();
 	$scope.getMenus();
 	$scope.getPages();
 	$scope.getVideos();
+	$scope.getImages();
+	
+	$scope.$on('$routeChangeStart', function(event, next, current){
+		if(next.templateUrl == 'views/videos.html'){
+			$scope.getVideos(next.params.offset,next.params.limit);
+		}else if(next.templateUrl == 'views/video.html'){
+			$scope.vindex = next.params.vindex;
+			$scope.video = $scope.videos[next.params.vindex];
+		}else if(next.templateUrl == 'views/news.html'){
+			$scope.nindex = next.params.nindex;
+			$scope.newz = $scope.news[next.params.nindex];			
+		}else if(next.templateUrl == 'views/page.html'){
+			$scope.setPage(next.params.page_id);
+		}
+	});
+	
+	$scope.setPage = function(id){
+		$.each($scope.pages,function(i,p){
+			if(p.id == id){
+				$scope.page = $scope.pages[i];
+				return;
+			}
+		});
+	}
 	
 	$scope.$on('$viewContentLoaded', function(){
-		if($route.current.loadedTemplateUrl == 'views/page.html'){
-			console.log($routeParams.page_id);
-			$scope.page = $scope.pages[$routeParams.page_id];
-			console.log($scope.pages);
-		}   
+		if($route.current.loadedTemplateUrl == 'views/index.html'){			
+			//if home page
+		}else if($route.current.loadedTemplateUrl == 'views/images.html'){			
+			$('.swipebox').swipebox();
+		}
 	});
 	
 	$scope.hasSub = function (menu) {
-		if(menu.hasOwnProperty('sub')){
+		if(menu.sub.length > 0){
 			return true;
 		}else{
 			return false;
@@ -138,35 +226,45 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		}
 	}
 	
-	$scope.videoId = function(url){
-		if(url.indexOf('vimeo.com')>=0){
-			return vmId(url);
-		}else if(url.indexOf('facebook.com')>=0){
-			return fbId(url);
-		}else if(url.indexOf('youtube')>=0){
-			return ytId(url);
-		}
-	}
-	$scope.videoThumb = function(url){
-		if(url.indexOf('vimeo.com')>=0){
-			return vmThumb(url);
-		}else if(url.indexOf('facebook.com')>=0){
-			return fbThumb(url);
-		}else if(url.indexOf('youtube')>=0){
-			return ytThumb(url);
-		}
-	}
-	$scope.videoIframe = function(url){
-		if(url.indexOf('vimeo.com')>=0){
-			return vmIframe(url);
-		}else if(url.indexOf('facebook.com')>=0){
-			return fbIframe(url);
-		}else if(url.indexOf('youtube')>=0){
-			return ytIframe(url);
-		}
+	$scope.makeTags = function(str){
+		if(str==null){return '';}
+		var tags = str.split(',');
+		var _tags = '';
+		$.each(tags,function(i,tag){
+			if(tag.trim() != ''){
+				_tags += '<span class="badge">'+tag+'</span> ';
+			}
+		});
+		return _tags;
 	}
 	
+	$scope.videoNavs = function(){
+		var navz = '';
+		var nxt = parseInt($scope.vindex) + 1;
+		var prv = parseInt($scope.vindex) - 1;
+		if($scope.videos[prv]!==undefined){
+			navz += '<a href="#/video/'+prv+'" class="btn btn-xs btn-info pull-left"><i class="fa fa-arrow-left"></i> Previous Video</a>';
+		}
+		if($scope.videos[nxt]!==undefined){
+			navz += '<a href="#/video/'+nxt+'" class="btn btn-xs btn-info pull-right"><i class="fa fa-arrow-right"></i> Next Video</a>';
+		}
+		navz +='<div class="clearfix"></div>';
+		return navz;
+	}
 	
+	$scope.newsNavs = function(){
+		var navz = '';
+		var nxt = parseInt($scope.nindex) + 1;
+		var prv = parseInt($scope.nindex) - 1;
+		if($scope.news[prv]!==undefined){
+			navz += '<a href="#/news/'+prv+'" class="btn btn-xs btn-info pull-left"><i class="fa fa-arrow-left"></i> Previous News</a>';
+		}
+		if($scope.news[nxt]!==undefined){
+			navz += '<a href="#/news/'+nxt+'" class="btn btn-xs btn-info pull-right"><i class="fa fa-arrow-right"></i> Next News</a>';
+		}
+		navz +='<div class="clearfix"></div>';
+		return navz;
+	}
 });
 
 app.filter("h", ['$sce', function ($sce) {
@@ -203,5 +301,13 @@ app.filter('myDate', function myDate($filter){
     var  tempdate= new Date(text.replace(/-/g,"/"));
     return $filter('date')(tempdate, "MMM-dd-yyyy");
   }
+});
+
+app.filter('nl2br', function myDate($sce){
+	return function(str,is_xhtml) { 
+		var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br ' + '/>' : '<br>'; // Adjust comment to avoid issue on phpjs.org display
+		var msg = (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+		return $sce.trustAsHtml(msg);
+	}
 });
 
