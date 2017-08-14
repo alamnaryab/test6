@@ -1,36 +1,46 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.codingsips.pti1" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>pti1</name>
+    <name>PTI Party</name>
     <description>
-        Pakistan Political Party App
+        Pakistan Leading Political Party PTI App
     </description>
-    <author href="https://alam.com" email="alamnaryab@gmail.com">
+    <author href="https://alampk.com" email="alamnaryab@gmail.com">
             Fakhr-e-Alam
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+	
+    <preference name="permissions" value="none"/>
+    <preference name="android-build-tool" value="gradle" /> 
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
+	
+    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <platform name="android">
-        <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
-        <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
-        <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
-        <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
-        <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
-        <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
-        <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
-        <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
-        <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
-        <splash density="land-xhdpi" src="www/res/screen/android/drawable-land-xhdpi-screen.png" />
-        <splash density="land-xxhdpi" src="www/res/screen/android/drawable-land-xxhdpi-screen.png" />
-        <splash density="land-xxxhdpi" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" />
-        <splash density="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
-        <splash density="port-mdpi" src="www/res/screen/android/drawable-port-mdpi-screen.png" />
-        <splash density="port-hdpi" src="www/res/screen/android/drawable-port-hdpi-screen.png" />
-        <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
-        <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
-        <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-    </platform>
+    
+	<icon platform="android" qualifier="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
+	<icon platform="android" qualifier="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
+	<icon platform="android" qualifier="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
+	<icon platform="android" qualifier="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
+	<icon platform="android" qualifier="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
+	<icon platform="android" qualifier="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
+	
+	<preference name="SplashScreen" value="screen"/>		
+	<preference name="SplashScreenDelay" value="5000" />
+	
+	<splash platform="android" qualifier="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
+	<splash platform="android" qualifier="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
+	<splash platform="android" qualifier="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
+	<splash platform="android" qualifier="land-xhdpi" src="www/res/screen/android/drawable-land-xhdpi-screen.png" />
+	<splash platform="android" qualifier="land-xxhdpi" src="www/res/screen/android/drawable-land-xxhdpi-screen.png" />
+	<splash platform="android" qualifier="land-xxxhdpi" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" />
+	<splash platform="android" qualifier="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
+	<splash platform="android" qualifier="port-mdpi" src="www/res/screen/android/drawable-port-mdpi-screen.png" />
+	<splash platform="android" qualifier="port-hdpi" src="www/res/screen/android/drawable-port-hdpi-screen.png" />
+	<splash platform="android" qualifier="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
+	<splash platform="android" qualifier="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
+	<splash platform="android" qualifier="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+    
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

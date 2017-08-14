@@ -40,6 +40,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
     //set loading variable (is ajax running?)
 	$scope.identifier= 'com.codingsips.pti1';
 	$scope.about 	= dbGet('about');
+	$scope.adCounter= 1;
     $scope.loading 	= false;
 	$scope.server 	= _s.server;
 	$scope.party_id = _s.party_id;
@@ -214,6 +215,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		}else if($route.current.loadedTemplateUrl == 'views/images.html'){			
 			$('.swipebox').swipebox();
 		}
+		$scope.intad();	
 	});
 	
 	$scope.hasSub = function (menu) {
@@ -272,6 +274,17 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		return navz;
 	}
 	
+	$scope.intad = function(){
+		$scope.adCounter++;
+		if($scope.adCounter==2){
+			if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+		}
+		if($scope.adCounter==10){
+			$scope.adCounter=0;
+			if(AdMob) AdMob.showInterstitial();			
+		}
+	}
+	
 	/*about starts here*/
 	var about = JSON.parse(localStorage.getItem("about"));
 	if(about == null){
@@ -306,6 +319,7 @@ $(function(){
             $(this).collapse('hide');
         }
     });
+	
 	
 }); 
 
