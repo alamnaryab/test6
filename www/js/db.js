@@ -4,7 +4,7 @@ var _s;
 $(function(){
 	if(!isset('settings') || 1==1){
 		var settings = {
-				server 		: 'http://localhost/party',
+				server 		: 'party.codingsips.com',/*'http://localhost/party'*/,
 				party_id 	: 1,
 				party_sm 	: 'PTI',
 				party_lg 	: 'Pakistan Tehreek e Insaf',
