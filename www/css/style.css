@@ -17,7 +17,7 @@ General
 .radius5{ border-radius: 5px; -mox-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; }
 .radius10{ border-radius: 10px; -mox-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px; }
 .no-radius{ border-radius: 0px; -mox-border-radius: 0px; -webkit-border-radius: 0px; -o-border-radius: 0px; }
-
+body{background:#EEE;}
 /********
 Nav
 ********/
@@ -99,7 +99,7 @@ Page-area
 }
 
 .page-content h1{
-    color: #FFF;
+    color: #066929;
     font-weight: bold;
     display: inline-block;
     padding-bottom: 5px;
@@ -111,6 +111,7 @@ Page-area
 }
 .page-content .section.news h1{
 	border-bottom: 3px solid #FFF;
+	color:#FFF;
 }
 .page-content .section.videos h1{
 	color: #FFF;
@@ -207,7 +208,7 @@ video::-internal-media-controls-download-button {display:none;}
 video::-webkit-media-controls-enclosure {overflow:hidden;}
 video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 .video-title{
-	color: #FFF;
+	color: #066929;
     font-weight: bold;
     white-space: nowrap;
 }
