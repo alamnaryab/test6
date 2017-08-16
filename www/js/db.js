@@ -6,9 +6,9 @@ $(function(){
 		var settings = {
 				server 		: 'http://party.codingsips.com',
 				//server 		: 'http://localhost/party',
-				party_id 	: 1,
-				party_sm 	: 'PTI',
-				party_lg 	: 'Pakistan Tehreek e Insaf',
+				party_id 	: 3,
+				party_sm 	: 'JI',
+				party_lg 	: 'Jamaat Islami',
 			};
 		dbSave('settings',settings);
 	}

@@ -38,7 +38,7 @@ app.config(['$locationProvider', function($locationProvider) {
 app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
     
     //set loading variable (is ajax running?)
-	$scope.identifier= 'com.codingsips.pti1';
+	$scope.identifier= 'com.codingsips.ji1';
 	$scope.about 	= dbGet('about');
 	$scope.adCounter= 1;
     $scope.loading 	= false;
@@ -319,8 +319,6 @@ $(function(){
             $(this).collapse('hide');
         }
     });
-	
-	
 }); 
 
 app.directive('a', function() {
