@@ -16,12 +16,7 @@
     <plugin name="cordova-plugin-admobpro" source="npm" />
 	
     
-    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="cordova-plugin-splashscreen" source="npm" />
-	
-	<preference name="SplashScreen" value="screen"/>
-	<preference name="AutoHideSplashScreen" value="true" />
-	<preference name="SplashScreenDelay" value="5000"/>
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />	
 
 	<platform name="android"> 
 		<icon src="www/icon.png" />
@@ -31,20 +26,25 @@
         <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
-        <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
-        <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
-        <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
-        <splash density="land-xhdpi" src="www/res/screen/android/drawable-land-xhdpi-screen.png" />
-        <splash density="land-xxhdpi" src="www/res/screen/android/drawable-land-xxhdpi-screen.png" />
-        <splash density="land-xxxhdpi" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" />
-        <splash density="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
-        <splash density="port-mdpi" src="www/res/screen/android/drawable-port-mdpi-screen.png" />
-        <splash density="port-hdpi" src="www/res/screen/android/drawable-port-hdpi-screen.png" />
-        <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
-        <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
-        <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-        <splash src="www/splash.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/ll.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/lm.png" />
+        <splash density="land-hdpi" src="www/res/screen/android/lh.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/lx.png" />
+        <splash density="land-xxhdpi" src="www/res/screen/android/lxx.png" />
+        <splash density="land-xxxhdpi" src="www/res/screen/android/lxxx.png" />
+        <splash density="port-ldpi" src="www/res/screen/android/pl.png" />
+        <splash density="port-mdpi" src="www/res/screen/android/pm.png" />
+        <splash density="port-hdpi" src="www/res/screen/android/ph.png" />
+        <splash density="port-xhdpi" src="www/res/screen/android/px.png" />
+        <splash density="port-xxhdpi" src="www/res/screen/android/pxx.png" />
+        <splash density="port-xxxhdpi" src="www/res/screen/android/pxxx.png" />
     </platform>
+	
+	<plugin name="cordova-plugin-splashscreen" source="npm" />
+	<preference name="SplashScreen" value="screen"/>		
+	<preference name="SplashScreenDelay" value="5000" />
+    <splash src="www/splash.png" />
+	
 	
     <access origin="*" />
     <allow-intent href="http://*/*" />
