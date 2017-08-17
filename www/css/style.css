@@ -208,25 +208,33 @@ video::-internal-media-controls-download-button {display:none;}
 video::-webkit-media-controls-enclosure {overflow:hidden;}
 video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 .video-title{
-	color: #066929;
+	color: #074e20;
     font-weight: bold;
     white-space: nowrap;
 }
 .section.news{
 	background:url(../img/party-crowd.jpg);
 	background-size:100% 100%;
+	background-attachment: fixed;
+	min-height: 450px;
 }
 .section.images{
 	background:url(../img/red-bg.jpg);
 	background-size:100% 100%;
+	background-attachment: fixed;
+	min-height: 450px;
 }
 .section.videos{
 	background:url(../img/jibg.jpg);
 	background-size:100% 100%;
+	background-attachment: fixed;
+	min-height: 450px;
 }
 .section.video{
 	background:url(../img/cross-bg.jpg);
 	background-size:100% 100%;
+	background-attachment: fixed;
+	min-height: 450px;
 }
 .section.images .photo{
 	height:25vw;

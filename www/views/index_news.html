@@ -2,7 +2,8 @@
 	<div class="col-xs-12 col-lg-12">
 	<h1><i class="fa fa-newspaper-o"></i> Hot News</h1>
 	<div class="list-group news-wrapper">
-		<div data-ng-repeat="newz in news" class="list-group-item news-item">					
+		<div data-ng-repeat="newz in news" ng-if="$index<6"
+			class="list-group-item news-item">					
 			<span class="news-date small mute">{{newz.date | myDate}}</span>
 			<a href="#/news/{{$index}}" >
 				<img alt="news image" 
@@ -14,6 +15,6 @@
 			
 		</div>				
 	</div>
-	<a href="#/news_list/0/20" class="btn btn-primary btn-xs">View All News</a>		
+	<a ng-href="#/news_list/0/{{limit}}" class="btn btn-primary btn-xs">View All News</a>		
 	</div>
 </div>

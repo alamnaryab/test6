@@ -6,12 +6,15 @@
 		<div class="row">
 			<div data-ng-repeat="img in images" class="col-xs-6 col-sm-4 col-md-3  collg-3 ">
 				<div class="photo thumbnail">
-					<a href="{{img.url}}" class="swipebox" title="{{img.title + ' | ' +img.tags}}" >
+					<a href="{{img.url}}" class="swipebox" ng-title="{{img.title + ' | ' +img.tags}}" >
 						<img alt="image" ng-src="{{img.url}}" class="img-responsive" />
 					</a>
 				</div>
 			</div>
 		</div>
-		<a href="#" class="btn btn-success btn-xs">Load More</a>
+		<a href="#" ng-click="moreImages();" class="btn btn-success btn-block">
+			<i ng-show="iloading" class='fa fa-spinner fa-spin '></i>
+			Load More
+		</a>
 	</div>
 </div>

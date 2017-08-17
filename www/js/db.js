@@ -72,9 +72,9 @@ function isset(v){
 
 function msg(m,c){
 	c = c || 'success';
-	str = '<div class="alert-wrapper" style="position:absolute;top:55px;width:80%;left:10%;"><div style="display:none;" class="text-center alert alert-';
+	str = '<div class="alert-wrapper" style="position:fixed;top:55px;width:80%;left:10%;"><div style="display:none;" class="text-center alert alert-';
 	str+= c+' alert-dismissable">';
-	str+= '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+m+'</div></div>';
+	str+= '<span class="close" data-dismiss="alert" aria-label="close">&times;</span>'+m+'</div></div>';
 	$('.alert-wrapper').remove();
 	$('body').after(str);
 	$('.alert-wrapper .alert').slideDown();

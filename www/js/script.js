@@ -56,10 +56,13 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.videos 	= dbGet('videos');
 	$scope.video    = [];
 	$scope.vindex   = 0;
-	$scope.limit    = 50;
+	$scope.limit    = 10;
 	$scope.noffset  = 0;
 	$scope.voffset  = 0;
 	$scope.ioffset  = 0;
+	$scope.nloading = false;
+	$scope.vloading = false;
+	$scope.iloading = false;
 	$scope.images 	= dbGet('images');
 	$scope.image    = '';
 	
@@ -99,6 +102,18 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		$scope.loading = false;
 	}
 	
+	$scope.moreNews = function(){
+		$scope.nloading = true;
+		$scope.noffset = ($scope.noffset + $scope.limit);
+		$scope.getNews($scope.noffset,$scope.limit);
+	}
+	$scope.appendNews = function(newData){
+		for(var i = 0; i < newData.length; i++) {
+		  $scope.news.push(newData[i]);
+		}
+		$scope.nloading = false;
+		$scope.intad();
+	}
 	$scope.getNews = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
 		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
@@ -110,11 +125,21 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
-            $scope.news = response.data;
-			dbSave('news',$scope.news);
+			if(offset==0 && response.data.length>0){
+				$scope.news = response.data;
+				dbSave('news',$scope.news);
+			}else if(offset>0 && response.data.length>0){
+				$scope.appendNews(response.data);
+			}else{
+				msg('No more News found.');
+				$scope.nloading = false;
+			}
         },function myError(response) {
-			$scope.news	= dbGet('news');
-            msg('Could not connect to server.[news]');
+			if(offset==0){
+				$scope.news	= dbGet('news');
+			}
+            msg('Could not connect to server to get News');
+			$scope.vloading = false;
         });
 		$scope.loading = false;
 	}
@@ -137,7 +162,18 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		$scope.loading = false;
 	}
 	
-	
+	$scope.moreVideos = function(){
+		$scope.vloading = true;
+		$scope.voffset = ($scope.voffset + $scope.limit);
+		$scope.getVideos($scope.voffset,$scope.limit);
+	}
+	$scope.appendVideos = function(newData){
+		for(var i = 0; i < newData.length; i++) {
+		  $scope.videos.push(newData[i]);
+		}
+		$scope.vloading = false;
+		$scope.intad();
+	}
 	$scope.getVideos = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
 		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
@@ -149,15 +185,37 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
-            $scope.videos = response.data;
-			dbSave('videos',$scope.videos);
+			if(offset==0 && response.data.length>0){
+				$scope.videos = response.data;
+				dbSave('videos',$scope.videos);
+			}else if(offset>0 && response.data.length>0){
+				$scope.appendVideos(response.data);
+			}else{
+				msg('No more Videos found.');
+				$scope.vloading = false;
+			}
         },function myError(response) {
-			$scope.videos	= dbGet('videos');
-            msg('Could not connect to server.[videos]');
+			if(offset==0){
+				$scope.videos	= dbGet('videos');
+			}
+            msg('Could not connect to server to get Videos');
+			$scope.vloading = false;
         });
 		$scope.loading = false;
 	}
 	
+	$scope.moreImages = function(){
+		$scope.iloading = true;
+		$scope.ioffset = ($scope.ioffset + $scope.limit);
+		$scope.getImages($scope.ioffset,$scope.limit);
+	}
+	$scope.appendImages = function(newData){
+		for(var i = 0; i < newData.length; i++) {
+		  $scope.images.push(newData[i]);
+		}
+		$scope.iloading = false;
+		$scope.intad();
+	}
 	$scope.getImages = function(offset,limit){
 		offset = typeof offset !== 'undefined' ? offset : 0;
 		limit = typeof limit !== 'undefined' ? limit : $scope.limit;
@@ -169,11 +227,21 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
             method: "GET",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response) {
-            $scope.images = response.data;
-			dbSave('images',$scope.images);
+			if(offset==0 && response.data.length>0){
+				$scope.images = response.data;
+				dbSave('images',$scope.images);
+			}else if(offset>0 && response.data.length>0){
+				$scope.appendImages(response.data);
+			}else{
+				msg('No more Images found.');
+				$scope.iloading = false;
+			}
         },function myError(response) {
-			$scope.images	= dbGet('images');
-            msg('Could not connect to server.[images]');
+			if(offset==0){
+				$scope.images	= dbGet('images');
+			}
+            msg('Could not connect to server to get Images');
+			$scope.iloading = false;
         });
 		$scope.loading = false;
 	}
@@ -198,6 +266,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		}else if(next.templateUrl == 'views/page.html'){
 			$scope.setPage(next.params.page_id);
 		}
+		$('.alert').remove();
 	});
 	
 	$scope.setPage = function(id){
@@ -277,11 +346,11 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.intad = function(){
 		$scope.adCounter++;
 		if($scope.adCounter==2){
-			if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+			//if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 		}
 		if($scope.adCounter==10){
 			$scope.adCounter=0;
-			if(AdMob) AdMob.showInterstitial();			
+			//if(AdMob) AdMob.showInterstitial();			
 		}
 	}
 	

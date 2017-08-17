@@ -17,6 +17,7 @@ if( /(android)/i.test(navigator.userAgent) ) {
 }
 
 function initApp() {
+	navigator.splashscreen.show();
     if (AdMob) {
         AdMob.createBanner({
             adId : admobid.banner,

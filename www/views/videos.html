@@ -12,6 +12,9 @@
 				</a>
 			</div>
 		</div>
-		<a href="#" class="btn btn-default btn-xs">Load More</a>
+		<a href="#" ng-click="moreVideos();" class="btn btn-default btn-block">
+			<i ng-show="vloading" class='fa fa-spinner fa-spin'></i>
+			Load More
+		</a>
 	</div>
 </div>
