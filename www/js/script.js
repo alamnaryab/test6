@@ -283,8 +283,15 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 			$('.swipebox').swipebox();
 		}else if($route.current.loadedTemplateUrl == 'views/images.html'){			
 			$('.swipebox').swipebox();
+		}else if($route.current.loadedTemplateUrl == 'views/index.html'){
+			$('#myCarousel').carousel({
+				 interval: 2000
+			 });
 		}
+		
+		
 		$scope.intad();	
+		$('body').scrollTop();//on view change scroll to top
 	});
 	
 	$scope.hasSub = function (menu) {
@@ -346,11 +353,11 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.intad = function(){
 		$scope.adCounter++;
 		if($scope.adCounter==2){
-			//if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+			if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 		}
-		if($scope.adCounter==10){
+		if($scope.adCounter>9){
 			$scope.adCounter=0;
-			//if(AdMob) AdMob.showInterstitial();			
+			if(AdMob) AdMob.showInterstitial();			
 		}
 	}
 	

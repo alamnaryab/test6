@@ -15,13 +15,16 @@
     <preference name="android-build-tool" value="gradle" /> 
     <plugin name="cordova-plugin-admobpro" source="npm" />
 	
-    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
-    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    <plugin name="cordova-plugin-splashscreen" source="npm" />
+	
 	<preference name="SplashScreen" value="screen"/>
-	<preference name="SplashScreenDelay" value="10000"/>
+	<preference name="AutoHideSplashScreen" value="true" />
+	<preference name="SplashScreenDelay" value="5000"/>
 
 	<platform name="android"> 
+		<icon src="www/icon.png" />
         <icon src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
@@ -40,6 +43,7 @@
         <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+        <splash src="www/splash.png" />
     </platform>
 	
     <access origin="*" />
