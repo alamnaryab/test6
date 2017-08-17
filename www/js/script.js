@@ -291,7 +291,7 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 		
 		
 		$scope.intad();	
-		$('body').scrollTop();//on view change scroll to top
+		$window.scrollTo(0, 0);//on view change scroll to top
 	});
 	
 	$scope.hasSub = function (menu) {
