@@ -1,6 +1,10 @@
 /********
 General
 ********/
+@font-face {
+    font-family: urdu;
+    src: url('Jameel Noori Nastaleeq.ttf');
+}
 .no-padding-top{padding-top:0px;}
 .no-padding-right{padding-right:0px;}
 .no-padding-bottom{padding-bottom:0px;}
@@ -140,6 +144,19 @@ Page-area
 #myCarousel .item img{
 	width:100%;
 }
+.news-wrapper a span{
+	width: 87%;
+    display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.oneline{
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .news-wrapper .news-item{
 	position:relative;
 }
@@ -218,6 +235,10 @@ video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 	background-attachment: fixed;
 	min-height: 450px;
 }
+.section.news{
+	background:url(../img/party-crowd.jpg);
+	background-size: 100%;
+}
 .section.images{
 	background:url(../img/red-bg.jpg);
 	background-size:100% 100%;
@@ -273,4 +294,16 @@ Footer
 }
 .light-theme h1{
 	color:#00a3de;
+}
+.rtl {
+    direction: rtl;
+	font-size: 1.4em;
+	font-family:urdu;
+}
+
+.ltr {
+    direction: ltr;
+}
+a.rtl {
+	display:block;
 }

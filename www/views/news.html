@@ -2,8 +2,8 @@
 	<div class="col-xs-12 col-lg-12">
 	<h1><i class="fa fa-newspaper-o"></i> News Detail</h1>
 	<div class="newz-item radius3">
-		<p class="news-title">{{newz.title}}</p>
-		<p class="news-content" ng-bind-html="newz.content | nl2br"></p>
+		<p class="news-title oneline" ng-class="(newz.content | isEng)">{{newz.title}}</p>
+		<p class="news-content" ng-class="(newz.content | isEng)" ng-bind-html="newz.content | nl2br"></p>
 	</div>
 	
 	<div class="navz" ng-bind-html="newsNavs() | h"></div>
