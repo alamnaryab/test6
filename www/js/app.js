@@ -423,11 +423,11 @@ app.controller('myCtrl', function ($scope,$http,$location,$route,$routeParams) {
 	$scope.intad = function(){
 		$scope.adCounter++;
 		if($scope.adCounter==2){
-			//if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+			if(AdMob) AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
 		}
 		if($scope.adCounter>9){
 			$scope.adCounter=0;
-			//if(AdMob) AdMob.showInterstitial();			
+			if(AdMob) AdMob.showInterstitial();			
 		}
 	}
 		
