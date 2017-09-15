@@ -1,0 +1,71 @@
+<div class="row section images">
+	<div class="col-xs-12 col-lg-12 overlay fh">
+		<h1 class="text-center text-center">{{party_lg}}</h1>
+		<div class="container">
+		
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<i class="fa fa-mobile"></i>
+					About <b>{{party_lg}} Party</b> App
+				</div>
+				<div class="panel-body">
+					<div  ng-class="(about | isEng)" ng-bind-html="about | h"></div>
+				</div>
+				<div class="panel-footer small text-center">
+					Powered by ITA &copy;
+				</div>
+			</div>
+		
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<i class="fa fa-share-alt"></i>
+					Share this App
+				</div>
+				<div class="panel-body">
+					Share this App with all party members and friends to promote JI Awaz for Pakistan.
+				</div>
+				<div class="panel-footer small text-center">
+					<button class="btn btn-warning btn-share-app">
+						<i class="fa fa-share-alt"></i>
+						Share this App
+					</button>
+				</div>
+			</div>
+			
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<i class="fa fa-star"></i>
+					Rate this App
+				</div>
+				<div class="panel-body">
+					This App is created by a volunteer and it is indeed great effort and pricefull contribution to JI Party, Give SHABASHEY to developer by rating this App 5 stars and providing a positive feedback.
+				</div>
+				<div class="panel-footer small text-center">
+					<button class="btn btn-danger btn-star-app"
+						onclick="window.open('https://play.google.com/store/apps/details?id=com.codingsips.ji1','_system','location=yes')">
+						<i class="fa fa-share-alt"></i>
+						Rate this App
+					</button>
+				</div>
+			</div>
+			
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<i class="fa fa-android"></i>
+					View / Install our other Apps
+				</div>
+				<div class="panel-body">
+					Click below button to view our other Apps, Install and share with your friends.
+				</div>
+				<div class="panel-footer small text-center">
+					<button class="btn btn-info btn-otherApps-app"
+						onclick="window.open('https://play.google.com/store/apps/developer?id=IT+Artificer')"
+					>
+						<i class="fa fa-android"></i>
+						View / Install our other Apps
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
